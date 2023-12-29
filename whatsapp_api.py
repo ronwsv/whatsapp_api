@@ -27,7 +27,10 @@ class WhatsApp:
         print('Loading...')
         chrome_options = Options()
         chrome_options.add_argument("disable-infobars")
-        driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driver.maximize_window()  # Adicione esta linha para maximizar a janela, se desejar
+        driver.get(WP_LINK)
+        driver.implicitly_wait(10)
         return driver
 
     def _get_element(self, xpath, attempts=5, _count=0):
